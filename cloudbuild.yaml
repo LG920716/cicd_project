@@ -38,7 +38,7 @@ steps:
     cd cicd_project_env && \
     git checkout candidate && \
     git config user.email ray123045608075@gmail.com
-    git config user.Username ray.huang
+    git config user.name ray.huang
 
 # This step generates the new manifest
 - name: 'gcr.io/cloud-builders/gcloud'

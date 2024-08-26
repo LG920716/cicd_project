@@ -34,9 +34,7 @@ steps:
   args:
   - '-c'
   - |
-    mkdir -p ~/.ssh
-    ssh-keyscan github.com >> ~/.ssh/known_hosts
-    git clone git@github.com:LG920716/cicd_project_env.git && \
+    git clone https://github.com/LG920716/cicd_project_env.git && \
     cd cicd_project_env && \
     git checkout candidate && \
     git config user.email ray123045608075@gmail.com
@@ -49,7 +47,6 @@ steps:
   args:
   - '-c'
   - |
-    set -x && \
     sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
     sed "s/COMMIT_SHA/${SHORT_SHA}/g" > cicd_project_env/kubernetes.yaml
 
@@ -60,10 +57,6 @@ steps:
   args:
   - '-c'
   - |
-    mkdir -p ~/.ssh
-    echo "$_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-    chmod 600 ~/.ssh/id_rsa
-    ssh-keyscan github.com >> ~/.ssh/known_hosts
     set -x && \
     cd cicd_project_env && \
     git add kubernetes.yaml && \

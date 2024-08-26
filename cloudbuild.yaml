@@ -34,7 +34,7 @@ steps:
   args:
   - '-c'
   - |
-    git clone https://github/LG920716/cicd_project_env.git && \
+    git clone https://github.com/LG920716/cicd_project_env.git && \
     cd cicd_project_env && \
     git checkout candidate && \
     git config user.email ray123045608075@gmail.com

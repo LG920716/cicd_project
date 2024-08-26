@@ -34,6 +34,8 @@ steps:
   args:
   - '-c'
   - |
+    mkdir -p ~/.ssh
+    ssh-keyscan github.com >> ~/.ssh/known_hosts
     git clone git@github.com:LG920716/cicd_project_env.git && \
     cd cicd_project_env && \
     git checkout candidate && \
@@ -47,8 +49,9 @@ steps:
   args:
   - '-c'
   - |
-     sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
-     sed "s/COMMIT_SHA/${SHORT_SHA}/g" > cicd_project_env/kubernetes.yaml
+    set -x && \
+    sed "s/GOOGLE_CLOUD_PROJECT/${PROJECT_ID}/g" kubernetes.yaml.tpl | \
+    sed "s/COMMIT_SHA/${SHORT_SHA}/g" > cicd_project_env/kubernetes.yaml
 
 # This step pushes the manifest back to cicd_project_env
 - name: 'gcr.io/cloud-builders/gcloud'

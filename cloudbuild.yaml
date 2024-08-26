@@ -58,15 +58,14 @@ steps:
   - '-c'
   - |
     mkdir -p ~/.ssh
-    echo "$_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     chmod 600 ~/.ssh/id_rsa
     ssh-keyscan github.com >> ~/.ssh/known_hosts
-    set -x && \
-    cd cicd_project_env && \
-    git add kubernetes.yaml && \
+    cd cicd_project_env
+    git add kubernetes.yaml
     git commit -m "Deploying image us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/cicd-project:${SHORT_SHA}
     Built from commit ${COMMIT_SHA} of repository cicd-project
-    Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
+    Author: $(git log --format='%an <%ae>' -n 1 HEAD)"
     git push origin candidate
 logsBucket: 'gs://tw-rd-ca-ray-huang-ci-cd-project'
 options:

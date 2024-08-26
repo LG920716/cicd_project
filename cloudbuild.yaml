@@ -64,7 +64,7 @@ steps:
     Built from commit ${COMMIT_SHA} of repository cicd-project
     Author: $(git log --format='%an <%ae>' -n 1 HEAD)" && \
     git checkout candidate
-    git push origin candidate
+    git push
 logsBucket: 'gs://tw-rd-ca-ray-huang-ci-cd-project'
 options:
   logging: GCS_ONLY

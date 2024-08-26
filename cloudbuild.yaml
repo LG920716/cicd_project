@@ -24,3 +24,6 @@ steps:
   args:
   - 'push'
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/cicd-project:$SHORT_SHA'
+logsBucket: 'gs://tw-rd-ca-ray-huang-ci-cd-project'
+options:
+  logging: GCS_ONLY

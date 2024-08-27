@@ -59,6 +59,7 @@ steps:
   - |
     set -x && \
     cd cicd_project_env && \
+    git config --global url."https://${_GITHUB_TOKEN}:@github.com/".insteadOf "https://github.com/" && \
     git add kubernetes.yaml && \
     git commit -m "Deploying image us-central1-docker.pkg.dev/$PROJECT_ID/my-repository/cicd-project:${SHORT_SHA}
     Built from commit ${COMMIT_SHA} of repository cicd-project
